@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .row.banner
+    .col-12
+      h1= pageHeader.title
+        small &nbsp;#{pageHeader.strapline}
+
+  // Starts header area
+  .row
+    .col-12.col-md-8
+      .card
+        .card-block
+          h4
+            a(href="/location") Dharma Donation
+            small &nbsp;
+            // Font Awesome stars with golden color
+            i.fas.fa-star(style="color: gold;")
+            i.fas.fa-star(style="color: gold;")
+            i.fas.fa-star(style="color: gold;")
+            i.fas.fa-star(style="color: gold;")
+            i.fas.fa-star(style="color: gold;")
+             
+          p.address Online
+          p.facilities
+            span.badge.badge-warning 
+            span.badge.badge-warning 
+            span.badge.badge-warning 
+
+    .col-12.col-md-4
+      p.lead Looking to donate?
