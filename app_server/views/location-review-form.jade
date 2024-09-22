@@ -1,26 +1,61 @@
 extends layout
 
 block content
-  .row.banner
-    .col-12
-      h1  Donations form
+  .row.banner(style="background-color: #f0f4f8; padding: 20px;")
+    .col-12.text-center
+      h1(style="color: #004d99; font-weight: bold;") Donations Form
 
   .row
-    .col-12.col-md-8
-      form(action="/location", method="get", role="form")
+    .col-12.col-md-8.offset-md-2
+      form(action="/location", method="get", role="form", style="background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);")
+        
+        // Name field
         .form-group.row
-          label.col-10.col-sm-2.col-form-label(for="name") Name
-          .col-12.col-sm-10
-            input#name.form-control(name="name")
-        .form-group.row
-          label.col-10.col-sm-2.col-form-label(for="rating") Donation amount
-          .col-12.col-sm-2
-            input#name.form-control(name="rating")
-              
-        .form-group.row
-          label.col-sm-2.col-form-label(for="review") Feedback
+          label.col-sm-2.col-form-label(for="name", style="color: #004d99; font-weight: 600;") Name
           .col-sm-10
-            textarea#review.form-control(name="review", rows="5")
-        button.btn.btn-primary.float-right Donate
+            input#name.form-control(type="text", name="name", placeholder="Enter your name", style="border: 1px solid #004d99;")
 
+        // Donation amount field
+        .form-group.row
+          label.col-sm-2.col-form-label(for="amount", style="color: #004d99; font-weight: 600;") Donation Amount
+          .col-sm-10
+            .btn-group.donation-amounts
+              button.btn.btn-outline-primary(type="button", style="margin-right: 10px; background-color: #e6f0ff; color: #004d99;", data-amount="5000", onclick="setAmount(5000)") ₹ 5,000
+              button.btn.btn-outline-primary(type="button", style="margin-right: 10px; background-color: #cce6ff; color: #004d99;", data-amount="15000", onclick="setAmount(15000)") ₹ 15,000
+              button.btn.btn-outline-primary(type="button", style="margin-right: 10px; background-color: #b3d9ff; color: #004d99;", data-amount="25000", onclick="setAmount(25000)") ₹ 25,000
+            input#other-amount.form-control.mt-3(type="number", name="otherAmount", placeholder="₹ Other Amount", min="500", style="border: 1px solid #004d99;")
+
+        // Minimum amount note
+        .form-group.row
+          .col-12
+            p.text-danger.text-center Minimum Amount should be Rs. 500/-
+
+        // Pledge support dropdown
+        .form-group.row
+          label.col-sm-2.col-form-label(for="pledge-support", style="color: #004d99; font-weight: 600;") I pledge my support for
+          .col-sm-10
+            select#pledge-support.form-control(name="pledge", style="border: 1px solid #004d99;")
+              option(value="elder-care") Elder Care
+              option(value="child-education") Child Education
+              option(value="women-empowerment") Women Empowerment
+              option(value="medical-relief") Medical Relief
+              
+        // Feedback textarea
+        .form-group.row
+          label.col-sm-2.col-form-label(for="review", style="color: #004d99; font-weight: 600;") Feedback
+          .col-sm-10
+            textarea#review.form-control(name="review", rows="5", placeholder="Enter your feedback", style="border: 1px solid #004d99;")
+
+        // Donate button
+        .form-group.row
+          .col-12.text-right
+            button.btn.btn-primary(type="submit", style="background-color: #004d99; border: none; padding: 10px 20px; border-radius: 4px; font-size: 16px;") Donate
+
+    // Optional Right column for extra information
     .col-12.col-md-4
+
+// JavaScript to handle amount selection
+script.
+  function setAmount(amount) {
+    document.getElementById('other-amount').value = amount;
+  }
