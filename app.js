@@ -4,12 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose'); // Import mongoose
-
+const donationController = require('./app_server/controllers/donationController');
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 
 // MongoDB connection
-const mongoDB = 'mongodb://localhost:27017/yourDatabaseName'; // Replace with your database name
+const mongoDB = 'mongodb+srv://22eg106b40:123@cluster0.f8snw.mongodb.net/Donation_platform'; // Replace with your database name
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/location', donationController.submitDonation);
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
