@@ -10,28 +10,36 @@ block content
       form(action="/location", method="get", role="form", style="background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);")
         
         // Name field
-        .form-group.row
+        .form-group.row(style="padding-bottom: 15px;")
           label.col-sm-2.col-form-label(for="name", style="color: #004d99; font-weight: 600;") Name
           .col-sm-10
             input#name.form-control(type="text", name="name", placeholder="Enter your name", style="border: 1px solid #004d99;")
 
+        // Email field
+        .form-group.row(style="padding-bottom: 15px;")
+          label.col-sm-2.col-form-label(for="email", style="color: #004d99; font-weight: 600;") Email
+          .col-sm-10
+            input#email.form-control(type="email", name="email", placeholder="Enter your email", style="border: 1px solid #004d99;")
+
+        // Phone number field
+        .form-group.row(style="padding-bottom: 15px;")
+          label.col-sm-2.col-form-label(for="phone", style="color: #004d99; font-weight: 600;") Phone Number
+          .col-sm-10
+            input#phone.form-control(type="tel", name="phone", placeholder="Enter your phone number", style="border: 1px solid #004d99;")
+
         // Donation amount field
-        .form-group.row
+        .form-group.row(style="padding-bottom: 15px;")
           label.col-sm-2.col-form-label(for="amount", style="color: #004d99; font-weight: 600;") Donation Amount
           .col-sm-10
-            .btn-group.donation-amounts
-              button.btn.btn-outline-primary(type="button", style="margin-right: 10px; background-color: #e6f0ff; color: #004d99;", data-amount="5000", onclick="setAmount(5000)") ₹ 5,000
-              button.btn.btn-outline-primary(type="button", style="margin-right: 10px; background-color: #cce6ff; color: #004d99;", data-amount="15000", onclick="setAmount(15000)") ₹ 15,000
-              button.btn.btn-outline-primary(type="button", style="margin-right: 10px; background-color: #b3d9ff; color: #004d99;", data-amount="25000", onclick="setAmount(25000)") ₹ 25,000
             input#other-amount.form-control.mt-3(type="number", name="otherAmount", placeholder="₹ Other Amount", min="500", style="border: 1px solid #004d99;")
 
         // Minimum amount note
-        .form-group.row
+        .form-group.row(style="padding-bottom: 15px;")
           .col-12
             p.text-danger.text-center Minimum Amount should be Rs. 500/-
 
         // Pledge support dropdown
-        .form-group.row
+        .form-group.row(style="padding-bottom: 15px;")
           label.col-sm-2.col-form-label(for="pledge-support", style="color: #004d99; font-weight: 600;") I pledge my support for
           .col-sm-10
             select#pledge-support.form-control(name="pledge", style="border: 1px solid #004d99;")
@@ -41,7 +49,7 @@ block content
               option(value="medical-relief") Medical Relief
               
         // Feedback textarea
-        .form-group.row
+        .form-group.row(style="padding-bottom: 15px;")
           label.col-sm-2.col-form-label(for="review", style="color: #004d99; font-weight: 600;") Feedback
           .col-sm-10
             textarea#review.form-control(name="review", rows="5", placeholder="Enter your feedback", style="border: 1px solid #004d99;")

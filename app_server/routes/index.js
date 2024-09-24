@@ -1,29 +1,21 @@
-/*var express = require('express');
-var router = express.Router();
-
- GET home page. 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
-*/
-/*const express = require('express');
-const router = express.Router();
-const ctrlMain = require('../controllers/main');
-/* GET homepage. 
-router.get('/', ctrlMain.index);
-module.exports = router; */
 const express = require('express');
 const router = express.Router();
 const ctrlLocations = require('../controllers/locations');
 const ctrlOthers = require('../controllers/others');
-const ctrLDonation = require('../controllers/shrestitha');
+const ctrlDonations = require('../controllers/donate');
+const ctrlReviews = require('../controllers/reviewsController'); // Update to use your reviews controller
+
 /* Locations pages */
 router.get('/', ctrlLocations.homelist);
 router.get('/location', ctrlLocations.locationInfo);
 router.get('/location/review/new', ctrlLocations.addReview);
+
+/* Reviews pages */
+router.get('/reviews', ctrlReviews.getReviews); // GET reviews page
+router.post('/reviews', ctrlReviews.addReview); // POST new review
+
 /* Other pages */
 router.get('/about', ctrlOthers.about);
-router.get('/donation', ctrLDonation.donation);
+router.get('/donation', ctrlDonations.don);
+
 module.exports = router;
